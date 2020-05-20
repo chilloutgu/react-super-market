@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './Item';
+import { observer, inject } from 'mobx-react';
 
 const items = [
     {
@@ -31,4 +32,6 @@ const ItemList = () => {
     )
 }
 
-export default ItemList;
+export default inject(({ market }) => ({
+    onPut: market.put
+}))(observer(ItemList));
